@@ -7,7 +7,7 @@ import { AccommodationType } from '../../providers/accommodation-service';
   selector: 'page-accommodation',
   templateUrl: 'accommodation.html',
 })
-export class Accommodation {
+export class AccommodationPage {
   public accommodation: AccommodationType;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {

@@ -6,7 +6,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-map',
   templateUrl: 'map.html',
 })
-export class Map {
+export class MapPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

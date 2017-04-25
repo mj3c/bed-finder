@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
-import { Accommodation } from './accommodation';
+import { AccommodationPage } from './accommodation';
 
 @NgModule({
   declarations: [
-    Accommodation,
+    AccommodationPage,
   ],
   imports: [],
   exports: [
-    Accommodation
+    AccommodationPage
   ]
 })
 export class AccommodationModule {}

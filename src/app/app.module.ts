@@ -6,9 +6,9 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-import { Map } from '../pages/map/map';
-import { Accommodation } from "../pages/accommodation/accommodation";
-import { Accommodations } from "../pages/accommodations/accommodations";
+import { MapPage } from '../pages/map/map';
+import { AccommodationPage } from "../pages/accommodation/accommodation";
+import { AccommodationsPage } from "../pages/accommodations/accommodations";
 
 import { AccommodationService } from "../providers/accommodation-service";
 
@@ -21,9 +21,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     HomePage,
     TabsPage,
-    Map,
-    Accommodation,
-    Accommodations
+    MapPage,
+    AccommodationPage,
+    AccommodationsPage
   ],
   imports: [
     BrowserModule,
@@ -35,9 +35,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     HomePage,
     TabsPage,
-    Map,
-    Accommodation,
-    Accommodations
+    MapPage,
+    AccommodationPage,
+    AccommodationsPage
   ],
   providers: [
     StatusBar,

@@ -1,7 +1,7 @@
 import { AfterViewInit, Component} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { Accommodation } from '../accommodation/accommodation';
+import { AccommodationPage } from '../accommodation/accommodation';
 import { AccommodationType, AccommodationService } from '../../providers/accommodation-service';
 
 @IonicPage()
@@ -9,7 +9,7 @@ import { AccommodationType, AccommodationService } from '../../providers/accommo
   selector: 'page-accommodations',
   templateUrl: 'accommodations.html',
 })
-export class Accommodations implements AfterViewInit {
+export class AccommodationsPage implements AfterViewInit {
   public accommodations: AccommodationType[];
 
   constructor(
@@ -20,7 +20,7 @@ export class Accommodations implements AfterViewInit {
   }
 
   accommodationSelected(acc: AccommodationType): void {
-    this.navCtrl.push(Accommodation, {
+    this.navCtrl.push(AccommodationPage, {
       data: {
         name: acc.name,
         description: acc.description,

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
-import { Map } from './map';
+import { MapPage } from './map';
 
 @NgModule({
   declarations: [
-    Map,
+    MapPage,
   ],
   imports: [],
   exports: [
-    Map
+    MapPage
   ]
 })
 export class MapModule {}
