@@ -14,7 +14,6 @@ import { AccommodationService } from "../providers/accommodation-service";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { GoogleMaps } from "@ionic-native/google-maps";
 
 @NgModule({
   declarations: [
@@ -44,8 +43,7 @@ import { GoogleMaps } from "@ionic-native/google-maps";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AccommodationService,
-    GoogleMaps
+    AccommodationService
   ]
 })
 export class AppModule {}

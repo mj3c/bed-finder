@@ -14,10 +14,10 @@ export interface AccommodationType {
 @Injectable()
 export class AccommodationService {
   private _accommodations: AccommodationType[] = [
-    {id: '1', name: 'Accomm 1', description: '\'Tis a silly place.', coordinates: {lat: 10, lon:20}},
-    {id: '2', name: 'Accomm 2', description: 'Now this place is special.', coordinates: {lat: 10, lon:20}},
-    {id: '3', name: 'Accomm 3', description: 'Place threeee!', coordinates: {lat: 10, lon:20}},
-    {id: '4', name: 'Accomm 4', description: 'A fourth one as well.', coordinates: {lat: 10, lon:20}}
+    {id: '1', name: 'Accomm 1', description: '\'Tis a silly place.', coordinates: {lat: 10, lon:25}},
+    {id: '2', name: 'Accomm 2', description: 'Now this place is special.', coordinates: {lat: 15, lon:28}},
+    {id: '3', name: 'Accomm 3', description: 'Place threeee!', coordinates: {lat: 23, lon:40}},
+    {id: '4', name: 'Accomm 4', description: 'A fourth one as well.', coordinates: {lat: 30, lon:10}}
   ];
 
   constructor() {

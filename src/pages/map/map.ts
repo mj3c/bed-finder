@@ -1,6 +1,7 @@
 import { AfterViewInit, Component} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { GoogleMap, GoogleMaps, GoogleMapsEvent } from "@ionic-native/google-maps";
+import { GoogleMap, GoogleMapsEvent, LatLng } from "@ionic-native/google-maps";
+import { AccommodationService } from "../../providers/accommodation-service";
 
 @IonicPage()
 @Component({
@@ -13,7 +14,7 @@ export class MapPage implements AfterViewInit {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private _googleMaps: GoogleMaps
+    private _accommodationService: AccommodationService
   ) {
   }
 
@@ -22,16 +23,27 @@ export class MapPage implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log('afterviewinit call');
     this.loadMap();
+  }
+
+  loadMarkers(): void {
+    this._accommodationService.getAccommodations()
+      .forEach(acc => {
+        let coords: LatLng = new LatLng(acc.coordinates.lat, acc.coordinates.lon);
+        let name: string   = acc.name;
+
+        this._map.addMarker({
+          position: coords,
+          title: name
+        })
+      });
   }
 
   loadMap() {
     this._map = new GoogleMap('map');
-    console.log('map object created');
     this._map.one(GoogleMapsEvent.MAP_READY)
       .then(_ => {
-        console.log('Map woohoo!');
+        this.loadMarkers();
       });
   }
 
