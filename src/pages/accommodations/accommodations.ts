@@ -1,22 +1,22 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { Accommodation, AccommodationType } from '../accommodation/accommodation';
+import { Accommodation } from '../accommodation/accommodation';
+import { AccommodationType, AccommodationService } from '../../providers/accommodation-service';
 
 @IonicPage()
 @Component({
   selector: 'page-accommodations',
   templateUrl: 'accommodations.html',
 })
-export class Accommodations {
-  public accommodations: AccommodationType[] = [
-    {name: 'Accomm 1', description: '\'Tis a silly place.', coordinates: {lat: 10, lon:20}},
-    {name: 'Accomm 2', description: 'Now this place is special.', coordinates: {lat: 10, lon:20}},
-    {name: 'Accomm 3', description: 'Place threeee!', coordinates: {lat: 10, lon:20}},
-    {name: 'Accomm 4', description: 'A fourth one as well.', coordinates: {lat: 10, lon:20}}
-  ];
+export class Accommodations implements AfterViewInit {
+  public accommodations: AccommodationType[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private _accommodationService: AccommodationService
+  ) {
   }
 
   accommodationSelected(acc: AccommodationType): void {
@@ -31,6 +31,10 @@ export class Accommodations {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Accommodations');
+  }
+
+  ngAfterViewInit() {
+    this.accommodations = this._accommodationService.getAccommodations();
   }
 
 }

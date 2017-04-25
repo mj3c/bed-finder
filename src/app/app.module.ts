@@ -7,11 +7,13 @@ import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { Map } from '../pages/map/map';
+import { Accommodation } from "../pages/accommodation/accommodation";
+import { Accommodations } from "../pages/accommodations/accommodations";
+
+import { AccommodationService } from "../providers/accommodation-service";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Accommodation } from "../pages/accommodation/accommodation";
-import { Accommodations } from "../pages/accommodations/accommodations";
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { Accommodations } from "../pages/accommodations/accommodations";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AccommodationService
   ]
 })
 export class AppModule {}

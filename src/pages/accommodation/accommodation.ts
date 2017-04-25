@@ -1,14 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-export interface AccommodationType {
-  name: string;
-  description: string;
-  coordinates: {
-    lat: number;
-    lon: number;
-  };
-}
+import { AccommodationType } from '../../providers/accommodation-service';
 
 @IonicPage()
 @Component({
