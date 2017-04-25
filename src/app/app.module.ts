@@ -10,6 +10,8 @@ import { Map } from '../pages/map/map';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Accommodation } from "../pages/accommodation/accommodation";
+import { Accommodations } from "../pages/accommodations/accommodations";
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     HomePage,
     TabsPage,
-    Map
+    Map,
+    Accommodation,
+    Accommodations
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     HomePage,
     TabsPage,
-    Map
+    Map,
+    Accommodation,
+    Accommodations
   ],
   providers: [
     StatusBar,
