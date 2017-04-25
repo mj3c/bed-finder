@@ -1,7 +1,10 @@
 import { AfterViewInit, Component} from '@angular/core';
+
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { GoogleMap, GoogleMapsEvent, LatLng } from "@ionic-native/google-maps";
+
 import { AccommodationService } from "../../providers/accommodation-service";
+import { GeolocationService } from "../../providers/geolocation-service";
 
 @IonicPage()
 @Component({
@@ -14,7 +17,8 @@ export class MapPage implements AfterViewInit {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private _accommodationService: AccommodationService
+    private _accommodationService: AccommodationService,
+    private _geolocationService: GeolocationService
   ) {
   }
 
@@ -39,12 +43,39 @@ export class MapPage implements AfterViewInit {
       });
   }
 
-  loadMap() {
-    this._map = new GoogleMap('map');
-    this._map.one(GoogleMapsEvent.MAP_READY)
-      .then(_ => {
-        this.loadMarkers();
-      });
+  panMapTo(position: LatLng) {
+    let mapOptions: any = {
+      'controls': {
+        'compass': true,
+        'myLocationButton': true,
+        'zoom': true
+      },
+      'gestures': {
+        'scroll': true,
+        'tilt': true,
+        'rotate': true,
+        'zoom': true,
+      },
+      'camera': {
+        'latLng': position,
+        'zoom': 15,
+      },
+    }
+
+    this._map.setOptions(mapOptions);
   }
 
+  loadMap() {
+    this._geolocationService.getPosition()
+      .then(position => {
+        let center = new LatLng(position.coords.latitude, position.coords.longitude);
+        this._map = new GoogleMap('map');
+        this._map.one(GoogleMapsEvent.MAP_READY)
+          .then(_ => {
+            this.loadMarkers();
+            console.log('lulz');
+            this.panMapTo(center);
+          });
+      });
+  }
 }

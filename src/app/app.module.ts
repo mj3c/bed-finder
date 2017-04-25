@@ -11,6 +11,7 @@ import { AccommodationPage } from "../pages/accommodation/accommodation";
 import { AccommodationsPage } from "../pages/accommodations/accommodations";
 
 import { AccommodationService } from "../providers/accommodation-service";
+import { GeolocationService } from "../providers/geolocation-service";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -43,7 +44,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AccommodationService
+    AccommodationService,
+    GeolocationService
   ]
 })
 export class AppModule {}
