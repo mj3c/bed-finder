@@ -17,35 +17,36 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 @NgModule({
-  declarations: [
-    MyApp,
-    AboutPage,
-    HomePage,
-    TabsPage,
-    MapPage,
-    AccommodationPage,
-    AccommodationsPage
-  ],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(MyApp)
-  ],
-  bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    AboutPage,
-    HomePage,
-    TabsPage,
-    MapPage,
-    AccommodationPage,
-    AccommodationsPage
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AccommodationService,
-    GeolocationService
-  ]
+    declarations: [
+        MyApp,
+        AboutPage,
+        HomePage,
+        TabsPage,
+        MapPage,
+        AccommodationPage,
+        AccommodationsPage
+    ],
+    imports: [
+        BrowserModule,
+        IonicModule.forRoot(MyApp)
+    ],
+    bootstrap: [IonicApp],
+    entryComponents: [
+        MyApp,
+        AboutPage,
+        HomePage,
+        TabsPage,
+        MapPage,
+        AccommodationPage,
+        AccommodationsPage
+    ],
+    providers: [
+        StatusBar,
+        SplashScreen,
+        { provide: ErrorHandler, useClass: IonicErrorHandler },
+        AccommodationService,
+        GeolocationService
+    ]
 })
-export class AppModule {}
+export class AppModule {
+}

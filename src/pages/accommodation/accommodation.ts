@@ -4,18 +4,18 @@ import { AccommodationType } from '../../providers/accommodation-service';
 
 @IonicPage()
 @Component({
-  selector: 'page-accommodation',
-  templateUrl: 'accommodation.html',
+    selector: 'page-accommodation',
+    templateUrl: 'accommodation.html',
 })
 export class AccommodationPage {
-  public accommodation: AccommodationType;
+    public accommodation: AccommodationType;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.accommodation = navParams.get('data');
-  }
+    constructor(public navCtrl: NavController, public navParams: NavParams) {
+        this.accommodation = navParams.get('data');
+    }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Accommodation');
-  }
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad Accommodation');
+    }
 
 }

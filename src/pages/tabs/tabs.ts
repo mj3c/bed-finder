@@ -5,15 +5,15 @@ import { MapPage } from '../map/map';
 import { AccommodationsPage } from "../accommodations/accommodations";
 
 @Component({
-  templateUrl: 'tabs.html'
+    templateUrl: 'tabs.html'
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
-  tab2Root = MapPage;
-  tab3Root = AccommodationsPage;
+    tab1Root = HomePage;
+    tab2Root = MapPage;
+    tab3Root = AccommodationsPage;
 
-  constructor() {
+    constructor() {
 
-  }
+    }
 }

@@ -1,18 +1,18 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Accommodations</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Accommodations</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
 
-  <ion-list>
-    <ion-item *ngFor="let acc of accommodations" (click)="accommodationSelected(acc)">
-      <p>{{acc.name}} | {{acc.description}}</p>
-    </ion-item>
-  </ion-list>
+    <ion-list>
+        <ion-item *ngFor="let acc of accommodations" (click)="accommodationSelected(acc)">
+            <p>{{acc.name}} | {{acc.description}}</p>
+        </ion-item>
+    </ion-list>
 
 </ion-content>
