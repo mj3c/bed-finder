@@ -1,8 +1,22 @@
 <ion-header>
 
-    <ion-navbar>
-        <ion-title>Edit accommodation info</ion-title>
-    </ion-navbar>
+    <ion-toolbar>
+        <ion-buttons start>
+            <button ion-button
+                    icon-only
+                    (click)="save()">
+                <ion-icon name="checkmark"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>Edit</ion-title>
+        <ion-buttons end>
+            <button ion-button
+                    icon-only>
+                <ion-icon name="more"></ion-icon>
+            </button>
+            <!-- TODO: Create 'more' menu and options for delete and share.-->
+        </ion-buttons>
+    </ion-toolbar>
 
 </ion-header>
 
