@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { AccommodationService, AccommodationType } from "../../providers/accommodation-service";
+import { GeolocationService } from "../../providers/geolocation-service";
 
 @IonicPage()
 @Component({
@@ -12,10 +13,30 @@ export class EditAccommodationPage {
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
+                private _loadingCtrl: LoadingController,
+                private _geolocationService: GeolocationService,
                 private _accommodationService: AccommodationService
     ) {
         let accId: string = navParams.get('data')['id'];
         this.accommodation = this._accommodationService.getAccommodation(accId);
+    }
+
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad EditAccommodation');
+    }
+
+    chooseLocation(): void {
+        let loading = this._loadingCtrl.create({
+            content: 'Fetching current location...'
+        });
+        loading.present();
+
+        this._geolocationService.getPosition()
+            .then(position => {
+                this.accommodation.coordinates.lat = position.coords.latitude;
+                this.accommodation.coordinates.lon = position.coords.longitude;
+                loading.dismiss();
+            });
     }
 
     save(): void {
@@ -25,10 +46,6 @@ export class EditAccommodationPage {
 
     cancel(): void {
         this.navCtrl.pop();
-    }
-
-    ionViewDidLoad() {
-        console.log('ionViewDidLoad EditAccommodation');
     }
 
 }
