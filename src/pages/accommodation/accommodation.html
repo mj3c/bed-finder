@@ -6,28 +6,14 @@
 
 
 <ion-content padding>
-    <ion-item>
-        <ion-label floating>Name</ion-label>
-        <ion-input [value]="accommodation.name"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Description</ion-label>
-        <ion-textarea rows="5" [value]="accommodation.description"></ion-textarea>
-    </ion-item>
-    <ion-grid>
-        <ion-row align-items-center>
-            <ion-col>
-                <ion-item>
-                    <ion-label floating>Latitude</ion-label>
-                    <ion-input type="number" [value]="accommodation.coordinates.lat"></ion-input>
-                </ion-item>
-            </ion-col>
-            <ion-col>
-                <ion-item>
-                    <ion-label floating>Longitutde</ion-label>
-                    <ion-input type="number" [value]="accommodation.coordinates.lon"></ion-input>
-                </ion-item>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+    <ion-list>
+        <ion-item>
+            <h1>{{accommodation.name}}</h1>
+            <p>{{accommodation.description}}</p>
+            <p>
+                <span>{{accommodation.coordinates.lat}}</span><span>,</span>
+                <span>{{accommodation.coordinates.lon}}</span>
+            </p>
+        </ion-item>
+    </ion-list>
 </ion-content>

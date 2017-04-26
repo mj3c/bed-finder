@@ -15,6 +15,7 @@ import { GeolocationService } from "../providers/geolocation-service";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { EditAccommodationPage } from "../pages/edit-accommodation/edit-accommodation";
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
         TabsPage,
         MapPage,
         AccommodationPage,
-        AccommodationsPage
+        AccommodationsPage,
+        EditAccommodationPage
     ],
     imports: [
         BrowserModule,
@@ -38,7 +40,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
         TabsPage,
         MapPage,
         AccommodationPage,
-        AccommodationsPage
+        AccommodationsPage,
+        EditAccommodationPage
     ],
     providers: [
         StatusBar,

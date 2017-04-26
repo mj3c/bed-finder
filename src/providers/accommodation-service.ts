@@ -28,8 +28,18 @@ export class AccommodationService {
         return this._accommodations;
     }
 
+    public getAccommodation(accId: string): AccommodationType {
+        return this._accommodations.find(x => x.id === accId);
+    }
+
     public addAccommodation(acc: AccommodationType): void {
         this._accommodations.push(acc);
+    }
+
+    public editAccommodation(acc: AccommodationType): void {
+        let oldAcc = this._accommodations.find(x => x.id === acc.id);
+        let accIndex = this._accommodations.indexOf(oldAcc);
+        this._accommodations[accIndex] = acc;
     }
 
     public deleteAccommodation(accId: string): void {

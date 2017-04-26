@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { AccommodationPage } from '../accommodation/accommodation';
 import { AccommodationType, AccommodationService } from '../../providers/accommodation-service';
+import { EditAccommodationPage } from "../edit-accommodation/edit-accommodation";
 
 @IonicPage()
 @Component({
@@ -17,9 +18,21 @@ export class AccommodationsPage implements AfterViewInit {
                 private _accommodationService: AccommodationService) {
     }
 
-    accommodationSelected(acc: AccommodationType): void {
+    accommodationClicked(acc: AccommodationType): void {
         this.navCtrl.push(AccommodationPage, {
             data: {
+                id: acc.id,
+                name: acc.name,
+                description: acc.description,
+                coordinates: acc.coordinates
+            }
+        });
+    }
+
+    accommodationPressed(acc: AccommodationType): void {
+        this.navCtrl.push(EditAccommodationPage, {
+            data: {
+                id: acc.id,
                 name: acc.name,
                 description: acc.description,
                 coordinates: acc.coordinates
