@@ -77,23 +77,27 @@ export class EditAccommodationPage {
     }
 
     delete(): void {
-        let confirmationAlert = this._alertCtrl.create({
-            title: "Are you sure?",
-            message: `If you choose YES, accommodation '${this.accommodation.name}' will permanently be deleted.`,
-            buttons: [
-                {
-                    text: 'No'
-                },
-                {
-                    text: 'Yes',
-                    handler: () => {
-                        this._accommodationService.deleteAccommodation(this.accommodation.id);
-                        this.navCtrl.pop();
+        if (this._mode === Mode.edit) {
+            let confirmationAlert = this._alertCtrl.create({
+                title: "Are you sure?",
+                message: `If you choose YES, accommodation '${this.accommodation.name}' will permanently be deleted.`,
+                buttons: [
+                    {
+                        text: 'No'
+                    },
+                    {
+                        text: 'Yes',
+                        handler: () => {
+                            this._accommodationService.deleteAccommodation(this.accommodation.id);
+                            this.navCtrl.pop();
+                        }
                     }
-                }
-            ]
-        });
-        confirmationAlert.present();
+                ]
+            });
+            confirmationAlert.present();
+        } else if (this._mode === Mode.add) {
+            this.navCtrl.pop();
+        }
     }
 
 }
