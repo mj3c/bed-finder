@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { AccommodationService, AccommodationType } from "../../providers/accommodation-service";
 import { GeolocationService } from "../../providers/geolocation-service";
 
@@ -28,6 +28,7 @@ export class EditAccommodationPage {
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 private _loadingCtrl: LoadingController,
+                private _alertCtrl: AlertController,
                 private _geolocationService: GeolocationService,
                 private _accommodationService: AccommodationService
     ) {
@@ -55,6 +56,10 @@ export class EditAccommodationPage {
                 this.accommodation.coordinates.lat = position.coords.latitude;
                 this.accommodation.coordinates.lon = position.coords.longitude;
                 loading.dismiss();
+            })
+            .catch((error: PositionError) => {
+                loading.dismiss();
+                alert(`Fetching error: '${error.message}'. Please try again after a brief period.`);
             });
     }
 
@@ -69,6 +74,26 @@ export class EditAccommodationPage {
 
     cancel(): void {
         this.navCtrl.pop();
+    }
+
+    delete(): void {
+        let confirmationAlert = this._alertCtrl.create({
+            title: "Are you sure?",
+            message: `If you choose YES, accommodation '${this.accommodation.name}' will permanently be deleted.`,
+            buttons: [
+                {
+                    text: 'No'
+                },
+                {
+                    text: 'Yes',
+                    handler: () => {
+                        this._accommodationService.deleteAccommodation(this.accommodation.id);
+                        this.navCtrl.pop();
+                    }
+                }
+            ]
+        });
+        confirmationAlert.present();
     }
 
 }

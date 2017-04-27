@@ -11,10 +11,10 @@
         <ion-title>Edit</ion-title>
         <ion-buttons end>
             <button ion-button
-                    icon-only>
-                <ion-icon name="more"></ion-icon>
+                    icon-only
+                    (click)="delete()">
+                <ion-icon name="trash"></ion-icon>
             </button>
-            <!-- TODO: Create 'more' menu and options for delete and share.-->
         </ion-buttons>
     </ion-navbar>
 
@@ -91,8 +91,7 @@
             <ion-col col-3>
                 <button ion-button
                         icon-only
-                        block
-                        (click)="chooseLocation()">
+                        block>
                     <ion-icon name="camera"></ion-icon>
                 </button>
             </ion-col>
