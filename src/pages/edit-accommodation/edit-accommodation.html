@@ -25,7 +25,7 @@
     <ion-grid class="edit-grid">
         <ion-row>
             <ion-col col-2>
-                <ion-icon name="information"></ion-icon>
+                <ion-icon name="information" class="section-icon"></ion-icon>
             </ion-col>
             <ion-col col-10>
                 <ion-item>
@@ -50,28 +50,12 @@
         </ion-row>
         <ion-row>
             <ion-col col-2>
-                <ion-icon name="map"></ion-icon>
+                <ion-icon name="map" class="section-icon"></ion-icon>
             </ion-col>
-            <ion-col col-5>
-                <ion-item>
-                    <ion-input type="text"
-                               placeholder="Latitude"
-                               [(ngModel)]="accommodation.coordinates.lat"></ion-input>
-                </ion-item>
-            </ion-col>
-            <ion-col col-5>
-                <ion-item>
-                    <ion-input type="text"
-                               placeholder="Longitude"
-                               [(ngModel)]="accommodation.coordinates.lon"></ion-input>
-                </ion-item>
-            </ion-col>
-        </ion-row>
-        <ion-row class="last-in-group">
-            <ion-col col-10>
+            <ion-col col-7>
 
             </ion-col>
-            <ion-col col-2>
+            <ion-col col-3>
                 <button ion-button
                         icon-only
                         block
@@ -80,12 +64,31 @@
                 </button>
             </ion-col>
         </ion-row>
+        <ion-row class="last-in-group">
+            <ion-col col-2>
+
+            </ion-col>
+            <ion-col col-5>
+                <ion-item>
+                    <ion-input type="number"
+                               placeholder="Latitude"
+                               [(ngModel)]="accommodation.coordinates.lat"></ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col col-5>
+                <ion-item>
+                    <ion-input type="number"
+                               placeholder="Longitude"
+                               [(ngModel)]="accommodation.coordinates.lon"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
         <ion-row>
             <ion-col col-2>
-                <ion-icon name="image"></ion-icon>
+                <ion-icon name="image" class="section-icon"></ion-icon>
             </ion-col>
-            <ion-col col-8></ion-col>
-            <ion-col col-2>
+            <ion-col col-7></ion-col>
+            <ion-col col-3>
                 <button ion-button
                         icon-only
                         block
