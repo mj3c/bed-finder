@@ -18,6 +18,14 @@ export class AccommodationsPage implements AfterViewInit {
                 private _accommodationService: AccommodationService) {
     }
 
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad Accommodations');
+    }
+
+    ngAfterViewInit() {
+        this.accommodations = this._accommodationService.getAccommodations();
+    }
+
     accommodationClicked(acc: AccommodationType): void {
         this.navCtrl.push(AccommodationPage, {
             data: {
@@ -40,12 +48,10 @@ export class AccommodationsPage implements AfterViewInit {
         });
     }
 
-    ionViewDidLoad() {
-        console.log('ionViewDidLoad Accommodations');
-    }
-
-    ngAfterViewInit() {
-        this.accommodations = this._accommodationService.getAccommodations();
+    newAccommodation(): void {
+        this.navCtrl.push(EditAccommodationPage, {
+            data: {}
+        });
     }
 
 }
