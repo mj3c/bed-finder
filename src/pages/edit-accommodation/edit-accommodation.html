@@ -21,50 +21,93 @@
 </ion-header>
 
 
-<ion-content padding>
-    <ion-item>
-        <ion-label floating>Name</ion-label>
-        <ion-input [(ngModel)]="accommodation.name"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Description</ion-label>
-        <ion-textarea rows="5" [(ngModel)]="accommodation.description"></ion-textarea>
-    </ion-item>
-
-    <ion-grid>
-        <ion-row align-items-center>
-            <ion-col>
+<ion-content padding class="edit-content">
+    <ion-grid class="edit-grid">
+        <ion-row>
+            <ion-col col-2>
+                <ion-icon name="information"></ion-icon>
+            </ion-col>
+            <ion-col col-10>
                 <ion-item>
-                    <ion-label floating>Latitude</ion-label>
-                    <ion-input type="number" [(ngModel)]="accommodation.coordinates.lat"></ion-input>
+                    <ion-input type="text"
+                               placeholder="Name"
+                               [(ngModel)]="accommodation.name"></ion-input>
                 </ion-item>
             </ion-col>
-            <ion-col>
+        </ion-row>
+        <ion-row class="last-in-group">
+            <ion-col col-2>
+
+            </ion-col>
+            <ion-col col-10>
                 <ion-item>
-                    <ion-label floating>Longitude</ion-label>
-                    <ion-input type="number" [(ngModel)]="accommodation.coordinates.lon"></ion-input>
+                    <ion-textarea rows="5"
+                                  type="text"
+                                  placeholder="Description"
+                                  [(ngModel)]="accommodation.description"></ion-textarea>
                 </ion-item>
             </ion-col>
         </ion-row>
         <ion-row>
-            <ion-col>
-                <button ion-button block (click)="chooseLocation()">
-                    Relocate
+            <ion-col col-2>
+                <ion-icon name="map"></ion-icon>
+            </ion-col>
+            <ion-col col-5>
+                <ion-item>
+                    <ion-input type="text"
+                               placeholder="Latitude"
+                               [(ngModel)]="accommodation.coordinates.lat"></ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col col-5>
+                <ion-item>
+                    <ion-input type="text"
+                               placeholder="Longitude"
+                               [(ngModel)]="accommodation.coordinates.lon"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row class="last-in-group">
+            <ion-col col-10>
+
+            </ion-col>
+            <ion-col col-2>
+                <button ion-button
+                        icon-only
+                        block
+                        (click)="chooseLocation()">
+                    <ion-icon name="locate"></ion-icon>
                 </button>
             </ion-col>
         </ion-row>
         <ion-row>
-            <ion-col>
+            <ion-col col-2>
+                <ion-icon name="image"></ion-icon>
+            </ion-col>
+            <ion-col col-8></ion-col>
+            <ion-col col-2>
+                <button ion-button
+                        icon-only
+                        block
+                        (click)="chooseLocation()">
+                    <ion-icon name="camera"></ion-icon>
+                </button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-2>
+
+            </ion-col>
+            <ion-col col-5>
                 <button ion-button block (click)="cancel()">
                     Cancel
                 </button>
             </ion-col>
-            <ion-col>
+            <ion-col col-5>
                 <button ion-button block (click)="save()">
                     Save
                 </button>
             </ion-col>
         </ion-row>
     </ion-grid>
-
 </ion-content>
