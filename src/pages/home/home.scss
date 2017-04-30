@@ -8,4 +8,17 @@ page-home {
         margin-right: auto;
         display: block;
     }
+
+    #home-list {
+        margin-top: 3em;
+    }
+
+    #home-list ion-item {
+        margin-bottom: 2em;
+    }
+
+    #home-list button {
+        display: block;
+        margin: auto;
+    }
 }

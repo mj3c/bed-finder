@@ -1,13 +1,24 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>Home</ion-title>
+        <ion-title>BedFinder</ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content padding>
     <div id="container">
+
         <canvas id="logo" #logo width="150" height="150">
         </canvas>
+
         <h2>Where would you like to go?</h2>
+
+        <ion-list id="home-list">
+            <ion-item>
+                <ion-input placeholder="Anywhere"></ion-input>
+            </ion-item>
+            <ion-item>
+                <button ion-button large round>Search</button>
+            </ion-item>
+        </ion-list>
     </div>
 </ion-content>
