@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { SqliteService } from "./sqlite-service";
-import { Subject } from "rxjs/Subject";
+import { ReplaySubject } from "rxjs/ReplaySubject";
 
 export interface AccommodationType {
     id: number;
@@ -15,14 +15,8 @@ export interface AccommodationType {
 
 @Injectable()
 export class AccommodationService {
-    // private _accommodations: AccommodationType[] = [
-    //     { id: 1, name: 'Accomm 1', description: '\'Tis a silly place.', coordinates: { lat: 10, lon: 25 } },
-    //     { id: 2, name: 'Accomm 2', description: 'Now this place is special.', coordinates: { lat: 15, lon: 28 } },
-    //     { id: 3, name: 'Accomm 3', description: 'Place threeee!', coordinates: { lat: 23, lon: 40 } },
-    //     { id: 4, name: 'Accomm 4', description: 'A fourth one as well.', coordinates: { lat: 30, lon: 10 } }
-    // ];
     private _accommodations: AccommodationType[];
-    public accommodationsSubject: Subject<AccommodationType[]> = new Subject();
+    public accommodationsSubject: ReplaySubject<AccommodationType[]> = new ReplaySubject(1);
 
     constructor(private _sqliteService: SqliteService) {
         this._sqliteService.dbSubject
@@ -33,10 +27,6 @@ export class AccommodationService {
                         this.accommodationsSubject.next(this._accommodations);
                     });
             });
-    }
-
-    public getAccommodations(): AccommodationType[] {
-        return this._accommodations;
     }
 
     public getAccommodation(accId: number): AccommodationType {

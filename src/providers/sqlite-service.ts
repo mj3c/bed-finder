@@ -106,10 +106,10 @@ export class SqliteService {
         let updateSubject: Subject<boolean> = new Subject();
         let values = [acc.name, acc.description, acc.coordinates.lat, acc.coordinates.lon, acc.id];
         this._db.executeSql('' +
-            'update Accommodations set' +
-            'name = ?,' +
-            'description = ?,' +
-            'lat = ?,' +
+            'update Accommodations set ' +
+            'name = ?, ' +
+            'description = ?, ' +
+            'lat = ?, ' +
             'lon = ? ' +
             'where id = ?;', values)
             .then((result) => {

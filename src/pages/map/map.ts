@@ -25,30 +25,23 @@ export class MapPage implements AfterViewInit {
         console.log('ionViewDidLoad Map');
     }
 
-    /**
-     * Reload all markers when user switches to map page. (temporary solution)
-     * TODO
-     */
-    ionViewWillEnter() {
-        if (this._map) {
-            this.loadMarkers();
-        }
-    }
-
     ngAfterViewInit() {
         this.loadMap();
     }
 
     loadMarkers(): void {
-        this._accommodationService.getAccommodations()
-            .forEach(acc => {
-                let coords: LatLng = new LatLng(acc.coordinates.lat, acc.coordinates.lon);
-                let name: string = acc.name;
+        this._accommodationService.accommodationsSubject
+            .subscribe((accs) => {
+                this._map.clear();
+                accs.forEach(acc => {
+                    let coords: LatLng = new LatLng(acc.coordinates.lat, acc.coordinates.lon);
+                    let name: string = acc.name;
 
-                this._map.addMarker({
-                    position: coords,
-                    title: name
-                })
+                    this._map.addMarker({
+                        position: coords,
+                        title: name
+                    })
+                });
             });
     }
 
@@ -87,8 +80,8 @@ export class MapPage implements AfterViewInit {
                 this._map.one(GoogleMapsEvent.MAP_READY)
                     .then(_ => {
                         loading.dismiss();
-                        this.loadMarkers();
                         this.setMapOptions(center);
+                        this.loadMarkers();
                     });
             });
     }
