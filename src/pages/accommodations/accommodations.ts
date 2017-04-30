@@ -10,21 +10,26 @@ import { EditAccommodationPage } from "../edit-accommodation/edit-accommodation"
     selector: 'page-accommodations',
     templateUrl: 'accommodations.html',
 })
-export class AccommodationsPage implements AfterViewInit {
+export class AccommodationsPage /*implements AfterViewInit*/ {
     public accommodations: AccommodationType[];
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
-                private _accommodationService: AccommodationService) {
+                private _accommodationService: AccommodationService
+    ) {
+        this._accommodationService.accommodationsSubject
+            .subscribe(accs => {
+                this.accommodations = accs;
+            });
     }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad Accommodations');
     }
 
-    ngAfterViewInit() {
-        this.accommodations = this._accommodationService.getAccommodations();
-    }
+    // ngAfterViewInit() {
+    //     this.accommodations = this._accommodationService.getAccommodations();
+    // }
 
     accommodationClicked(acc: AccommodationType): void {
         this.navCtrl.push(AccommodationPage, {

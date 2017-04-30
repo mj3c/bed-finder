@@ -16,6 +16,7 @@ import { GeolocationService } from "../providers/geolocation-service";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { EditAccommodationPage } from "../pages/edit-accommodation/edit-accommodation";
+import { SqliteService } from "../providers/sqlite-service";
 
 @NgModule({
     declarations: [
@@ -48,7 +49,8 @@ import { EditAccommodationPage } from "../pages/edit-accommodation/edit-accommod
         SplashScreen,
         { provide: ErrorHandler, useClass: IonicErrorHandler },
         AccommodationService,
-        GeolocationService
+        GeolocationService,
+        SqliteService
     ]
 })
 export class AppModule {
