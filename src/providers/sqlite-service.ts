@@ -65,27 +65,76 @@ export class SqliteService {
     }
 
     public getAccommodations(): Observable<AccommodationType[]> {
-        let accommodationsSubject: Subject<AccommodationType[]> = new Subject();
-        if (this._db) {
-            this._db.executeSql('select * from Accommodations', [])
-                .then((results: SQLResultSet) => {
-                    let accommodations: AccommodationType[] = [];
-                    for (let i = 0; i < results.rows.length; i++) {
-                        let dbAcc: DBAccommodationType = results.rows.item(i);
-                        let domainAcc: AccommodationType = this.accommodationDbToDomain(dbAcc);
-                        accommodations.push(domainAcc);
-                    }
-                    accommodationsSubject.next(accommodations);
-                    accommodationsSubject.complete();
-                })
-                .catch((error) => {
-                    console.log(`Error fetching accommodations: '${error}'`);
-                });
-        } else {
-            console.log('Database does not exist!');
-        }
+        let accsSubject: Subject<AccommodationType[]> = new Subject();
+        this._db.executeSql('select * from Accommodations', [])
+            .then((results: SQLResultSet) => {
+                let accommodations: AccommodationType[] = [];
+                for (let i = 0; i < results.rows.length; i++) {
+                    let dbAcc: DBAccommodationType = results.rows.item(i);
+                    let domainAcc: AccommodationType = this.accommodationDbToDomain(dbAcc);
+                    accommodations.push(domainAcc);
+                }
+                accsSubject.next(accommodations);
+                accsSubject.complete();
+            })
+            .catch((error) => {
+                console.log(`Error fetching accommodations: '${error}'`);
+            });
 
-        return accommodationsSubject;
+        return accsSubject;
+    }
+
+    public insertAccommodation(acc: AccommodationType): Observable<boolean> {
+        let insertSubject: Subject<boolean> = new Subject();
+        let values = [acc.id, acc.name, acc.description, acc.coordinates.lat, acc.coordinates.lon];
+        this._db.executeSql('' +
+            'insert into Accommodations ' +
+            '(id, name, description, lat, lon)' +
+            'values (?, ?, ?, ?, ?)', values)
+            .then((result) => {
+                insertSubject.next(result);
+                insertSubject.complete();
+            })
+            .catch((error) => {
+                console.log(`Error adding accommodation: '${error}'`);
+            });
+
+        return insertSubject;
+    }
+
+    public updateAccommodation(acc: AccommodationType): Observable<boolean> {
+        let updateSubject: Subject<boolean> = new Subject();
+        let values = [acc.name, acc.description, acc.coordinates.lat, acc.coordinates.lon, acc.id];
+        this._db.executeSql('' +
+            'update Accommodations set' +
+            'name = ?,' +
+            'description = ?,' +
+            'lat = ?,' +
+            'lon = ? ' +
+            'where id = ?;', values)
+            .then((result) => {
+                updateSubject.next(result);
+                updateSubject.complete();
+            })
+            .catch((error) => {
+                console.log(`Error updating accommodation: '${error}'`);
+            });
+
+        return updateSubject;
+    }
+
+    public deleteAccommodation(accId: number): Observable<boolean> {
+        let deleteSubject: Subject<boolean> = new Subject();
+        this._db.executeSql('delete from Accommodations where id = ?', accId)
+            .then((result) => {
+                deleteSubject.next(result);
+                deleteSubject.complete();
+            })
+            .catch((error) => {
+                console.log(`Error deleting accommodation: '${error}'`);
+            });
+
+        return deleteSubject;
     }
 
 }

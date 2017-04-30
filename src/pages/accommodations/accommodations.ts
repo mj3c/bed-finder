@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { AccommodationPage } from '../accommodation/accommodation';
@@ -10,7 +10,7 @@ import { EditAccommodationPage } from "../edit-accommodation/edit-accommodation"
     selector: 'page-accommodations',
     templateUrl: 'accommodations.html',
 })
-export class AccommodationsPage /*implements AfterViewInit*/ {
+export class AccommodationsPage {
     public accommodations: AccommodationType[];
 
     constructor(public navCtrl: NavController,
@@ -26,10 +26,6 @@ export class AccommodationsPage /*implements AfterViewInit*/ {
     ionViewDidLoad() {
         console.log('ionViewDidLoad Accommodations');
     }
-
-    // ngAfterViewInit() {
-    //     this.accommodations = this._accommodationService.getAccommodations();
-    // }
 
     accommodationClicked(acc: AccommodationType): void {
         this.navCtrl.push(AccommodationPage, {

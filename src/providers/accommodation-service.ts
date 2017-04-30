@@ -44,21 +44,29 @@ export class AccommodationService {
     }
 
     public addAccommodation(acc: AccommodationType): void {
-        this._accommodations.push(acc);
-        this.accommodationsSubject.next(this._accommodations);
+        this._sqliteService.insertAccommodation(acc)
+            .subscribe(_ => {
+                this._accommodations.push(acc);
+                this.accommodationsSubject.next(this._accommodations);
+            });
     }
 
     public editAccommodation(acc: AccommodationType): void {
-        let oldAcc = this._accommodations.find(x => x.id === acc.id);
-        let accIndex = this._accommodations.indexOf(oldAcc);
-        this._accommodations[accIndex] = acc;
-        this.accommodationsSubject.next(this._accommodations);
+        this._sqliteService.updateAccommodation(acc)
+            .subscribe(_ => {
+                let oldAcc = this._accommodations.find(x => x.id === acc.id);
+                let accIndex = this._accommodations.indexOf(oldAcc);
+                this._accommodations[accIndex] = acc;
+                this.accommodationsSubject.next(this._accommodations);
+            });
     }
 
     public deleteAccommodation(accId: number): void {
-        let acc = this._accommodations.find(x => x.id === accId);
-        this._accommodations.splice(this._accommodations.indexOf(acc), 1);
-        this.accommodationsSubject.next(this._accommodations);
+        this._sqliteService.deleteAccommodation(accId)
+            .subscribe(_ => {
+                let acc = this._accommodations.find(x => x.id === accId);
+                this._accommodations.splice(this._accommodations.indexOf(acc), 1);
+                this.accommodationsSubject.next(this._accommodations);
+            });
     }
-
 }
