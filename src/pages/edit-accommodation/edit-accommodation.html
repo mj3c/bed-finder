@@ -1,5 +1,4 @@
 <ion-header>
-
     <ion-navbar>
         <ion-buttons start>
             <button ion-button
@@ -17,7 +16,6 @@
             </button>
         </ion-buttons>
     </ion-navbar>
-
 </ion-header>
 
 
@@ -37,7 +35,6 @@
         </ion-row>
         <ion-row class="last-in-group">
             <ion-col col-2>
-
             </ion-col>
             <ion-col col-10>
                 <ion-item>
@@ -53,7 +50,6 @@
                 <ion-icon name="map" class="section-icon"></ion-icon>
             </ion-col>
             <ion-col col-7>
-
             </ion-col>
             <ion-col col-3>
                 <button ion-button
@@ -66,7 +62,6 @@
         </ion-row>
         <ion-row class="last-in-group">
             <ion-col col-2>
-
             </ion-col>
             <ion-col col-5>
                 <ion-item>
@@ -91,9 +86,15 @@
             <ion-col col-3>
                 <button ion-button
                         icon-only
-                        block>
+                        block
+                        (click)="addPicture()">
                     <ion-icon name="camera"></ion-icon>
                 </button>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="accommodation.image">
+            <ion-col>
+                <img [src]="'data:image/jpeg;base64,' + accommodation.image">
             </ion-col>
         </ion-row>
     </ion-grid>

@@ -12,6 +12,7 @@ interface DBAccommodationType {
     description: string;
     lat: number;
     lon: number;
+    image: string;
 }
 
 @Injectable()
@@ -19,11 +20,12 @@ export class SqliteService {
 
     private DATABASE_CREATE: string = '' +
         'create table if not exists Accommodations (' +
-        'id integer primary key autoincrement not null,' +
-        'name text not null,' +
-        'description text,' +
-        'lat real not null,' +
-        'lon real not null)';
+        'id integer primary key autoincrement not null, ' +
+        'name text not null, ' +
+        'description text, ' +
+        'lat real not null, ' +
+        'lon real not null, ' +
+        'image text)';
     private DATABASE_CONFIG: SQLiteDatabaseConfig = {
         name: 'bedfinder.db',
         location: 'default'
@@ -60,7 +62,8 @@ export class SqliteService {
             coordinates: {
                 lat: acc.lat,
                 lon: acc.lon
-            }
+            },
+            image: acc.image
         };
     }
 
@@ -86,11 +89,11 @@ export class SqliteService {
 
     public insertAccommodation(acc: AccommodationType): Observable<boolean> {
         let insertSubject: Subject<boolean> = new Subject();
-        let values = [acc.id, acc.name, acc.description, acc.coordinates.lat, acc.coordinates.lon];
+        let values = [acc.id, acc.name, acc.description, acc.coordinates.lat, acc.coordinates.lon, acc.image];
         this._db.executeSql('' +
             'insert into Accommodations ' +
-            '(id, name, description, lat, lon)' +
-            'values (?, ?, ?, ?, ?)', values)
+            '(id, name, description, lat, lon, image)' +
+            'values (?, ?, ?, ?, ?, ?)', values)
             .then((result) => {
                 insertSubject.next(result);
                 insertSubject.complete();
@@ -104,13 +107,14 @@ export class SqliteService {
 
     public updateAccommodation(acc: AccommodationType): Observable<boolean> {
         let updateSubject: Subject<boolean> = new Subject();
-        let values = [acc.name, acc.description, acc.coordinates.lat, acc.coordinates.lon, acc.id];
+        let values = [acc.name, acc.description, acc.coordinates.lat, acc.coordinates.lon, acc.image, acc.id];
         this._db.executeSql('' +
             'update Accommodations set ' +
             'name = ?, ' +
             'description = ?, ' +
             'lat = ?, ' +
-            'lon = ? ' +
+            'lon = ?, ' +
+            'image = ? ' +
             'where id = ?;', values)
             .then((result) => {
                 updateSubject.next(result);

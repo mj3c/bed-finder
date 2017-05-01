@@ -10,7 +10,8 @@ export interface AccommodationType {
     coordinates: {
         lat: number;
         lon: number;
-    };
+    },
+    image: string;
 }
 
 @Injectable()
