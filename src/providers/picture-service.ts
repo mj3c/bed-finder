@@ -10,8 +10,6 @@ export enum PictureSource {
 @Injectable()
 export class PictureService {
     private _camera = new Camera();
-    // constructor() {
-    // }
 
     public getPicture(source: PictureSource): Promise<string> {
         let camOptions: CameraOptions = {
