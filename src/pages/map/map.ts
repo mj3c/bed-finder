@@ -1,12 +1,11 @@
 import { AfterViewInit, Component } from '@angular/core';
 
-import { IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
+import { LoadingController, NavController, NavParams } from 'ionic-angular';
 import { GoogleMap, GoogleMapsEvent, LatLng } from "@ionic-native/google-maps";
 
 import { AccommodationService } from "../../providers/accommodation-service";
 import { GeolocationService } from "../../providers/geolocation-service";
 
-@IonicPage()
 @Component({
     selector: 'page-map',
     templateUrl: 'map.html',

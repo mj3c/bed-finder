@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {
-    ActionSheetController, AlertController, IonicPage, LoadingController, NavController,
+    ActionSheetController, AlertController, LoadingController, NavController,
     NavParams
 } from 'ionic-angular';
 import { AccommodationService, AccommodationType } from "../../providers/accommodation-service";
@@ -13,7 +13,6 @@ enum Mode {
     ADD
 }
 
-@IonicPage()
 @Component({
     selector: 'page-edit-accommodation',
     templateUrl: 'edit-accommodation.html',

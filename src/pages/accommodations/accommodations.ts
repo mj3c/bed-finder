@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 import { AccommodationPage } from '../accommodation/accommodation';
 import { AccommodationType, AccommodationService } from '../../providers/accommodation-service';
 import { EditAccommodationPage } from "../edit-accommodation/edit-accommodation";
 
-@IonicPage()
 @Component({
     selector: 'page-accommodations',
     templateUrl: 'accommodations.html',
