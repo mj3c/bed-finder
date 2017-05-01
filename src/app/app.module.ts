@@ -18,6 +18,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { EditAccommodationPage } from "../pages/edit-accommodation/edit-accommodation";
 import { SqliteService } from "../providers/sqlite-service";
 import { PictureService } from "../providers/picture-service";
+import { IonicImageViewerModule } from "ionic-img-viewer";
 
 @NgModule({
     declarations: [
@@ -32,7 +33,8 @@ import { PictureService } from "../providers/picture-service";
     ],
     imports: [
         BrowserModule,
-        IonicModule.forRoot(MyApp)
+        IonicModule.forRoot(MyApp),
+        IonicImageViewerModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [

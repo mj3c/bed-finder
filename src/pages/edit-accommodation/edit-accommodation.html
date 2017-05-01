@@ -94,7 +94,7 @@
         </ion-row>
         <ion-row *ngIf="accommodation.image">
             <ion-col>
-                <img [src]="'data:image/jpeg;base64,' + accommodation.image">
+                <img [src]="'data:image/jpeg;base64,' + accommodation.image" imageViewer>
             </ion-col>
         </ion-row>
     </ion-grid>
