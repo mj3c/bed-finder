@@ -22,6 +22,7 @@
                   (click)="accommodationClicked(acc)"
                   (press)="accommodationPressed(acc)">
             <p>{{acc.name}} | {{acc.description}}</p>
+            <button ion-button (click)="shareClicked(acc)">Share</button>
         </ion-item>
     </ion-list>
 

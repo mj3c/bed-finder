@@ -19,6 +19,7 @@ import { EditAccommodationPage } from "../pages/edit-accommodation/edit-accommod
 import { SqliteService } from "../providers/sqlite-service";
 import { PictureService } from "../providers/picture-service";
 import { IonicImageViewerModule } from "ionic-img-viewer";
+import { SharingService } from "../providers/sharing-service";
 
 @NgModule({
     declarations: [
@@ -54,7 +55,8 @@ import { IonicImageViewerModule } from "ionic-img-viewer";
         AccommodationService,
         GeolocationService,
         SqliteService,
-        PictureService
+        PictureService,
+        SharingService
     ]
 })
 export class AppModule {

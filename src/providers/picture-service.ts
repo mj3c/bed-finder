@@ -13,13 +13,15 @@ export class PictureService {
 
     public getPicture(source: PictureSource): Promise<string> {
         let camOptions: CameraOptions = {
-            quality: 100,
             destinationType: this._camera.DestinationType.DATA_URL,
-            encodingType: this._camera.EncodingType.JPEG,
+            encodingType: this._camera.EncodingType.PNG,
             mediaType: this._camera.MediaType.PICTURE,
             sourceType: (source === PictureSource.CAMERA)
                 ? this._camera.PictureSourceType.CAMERA
-                : this._camera.PictureSourceType.PHOTOLIBRARY
+                : this._camera.PictureSourceType.PHOTOLIBRARY,
+            quality: 50,
+            targetWidth: 640,
+            targetHeight: 480
         };
 
         return new Promise((resolve, reject) => {

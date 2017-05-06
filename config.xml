@@ -43,4 +43,5 @@
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyDTixouzNYRNB60qqCHGkx746TfEr-UqsQ" />
         <variable name="API_KEY_FOR_IOS" value="AIzaSyA159Aw04it1L5uHmgj0ikiM2C1ZJdlNyA" />
     </plugin>
+    <plugin name="cordova-plugin-x-socialsharing" spec="~5.1.8" />
 </widget>

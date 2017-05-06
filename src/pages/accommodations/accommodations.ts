@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { ActionSheetController, NavController, NavParams } from 'ionic-angular';
 
 import { AccommodationPage } from '../accommodation/accommodation';
 import { AccommodationType, AccommodationService } from '../../providers/accommodation-service';
 import { EditAccommodationPage } from "../edit-accommodation/edit-accommodation";
+import { SharingService } from "../../providers/sharing-service";
 
 @Component({
     selector: 'page-accommodations',
@@ -14,7 +15,9 @@ export class AccommodationsPage {
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
-                private _accommodationService: AccommodationService
+                private _actionSheetCtrl: ActionSheetController,
+                private _accommodationService: AccommodationService,
+                private _sharingService: SharingService
     ) {
         this._accommodationService.accommodationsSubject
             .subscribe(accs => {
@@ -52,6 +55,31 @@ export class AccommodationsPage {
         this.navCtrl.push(EditAccommodationPage, {
             data: {}
         });
+    }
+
+    shareClicked(acc): void {
+        // let actionSheet = this._actionSheetCtrl.create({
+        //     title: 'Share via',
+        //     buttons: [
+        //         {
+        //             text: 'Facebook',
+        //             icon: 'facebook',
+        //             handler: () => {
+        //                 this._sharingService.share(acc, SharingPlatform.FACEBOOK);
+        //             }
+        //         },
+        //         {
+        //             text: 'Twitter',
+        //             icon: 'twitter',
+        //             handler: () => {
+        //                 this._sharingService.share(acc, SharingPlatform.TWITTER);
+        //             }
+        //         }
+        //     ]
+        // });
+        //
+        // actionSheet.present();
+        this._sharingService.share(acc);
     }
 
 }
