@@ -4,6 +4,89 @@ import { SqliteService } from "./sqlite-service";
 import { ReplaySubject } from "rxjs/ReplaySubject";
 import { LatLng, LatLngBounds } from "@ionic-native/google-maps";
 
+const mockAccommodations: AccommodationType[] = [
+    {
+        id: 1,
+        name: "Two bedroom appartment in the heart of Amsterdam",
+        description: "Quiet, clean, nice neighbourhood,reasonable parking, " +
+        "Accomodation enjoys good privacy. " +
+        "Vondelpark and many restaurants just around the corner. " +
+        "Finances go to the Gambia Agricultural Project in Gambia!! " +
+        "Supporting 25 people ( information at interest).",
+        coordinates: {
+            lat: 52.3721825,
+            lon: 4.888081
+        },
+        phone: '+381641234567',
+        email: 'example@gmail.com',
+        image: ''
+    },
+    {
+        id: 2,
+        name: "Single bed dorm",
+        description: "Quiet, clean, nice neighbourhood,reasonable parking, " +
+        "Accomodation enjoys good privacy. " +
+        "Vondelpark and many restaurants just around the corner. " +
+        "Finances go to the Gambia Agricultural Project in Gambia!! " +
+        "Supporting 25 people ( information at interest).",
+        coordinates: {
+            lat: 53.3721825,
+            lon: 4.888081
+        },
+        phone: '+381641234567',
+        email: 'example@gmail.com',
+        image: ''
+    },
+    {
+        id: 3,
+        name: "Amstel Botel",
+        description: "Quiet, clean, nice neighbourhood,reasonable parking, " +
+        "Accomodation enjoys good privacy. " +
+        "Vondelpark and many restaurants just around the corner. " +
+        "Finances go to the Gambia Agricultural Project in Gambia!! " +
+        "Supporting 25 people ( information at interest).",
+        coordinates: {
+            lat: 52.3721825,
+            lon: 5.888081
+        },
+        phone: '+381641234567',
+        email: 'example@gmail.com',
+        image: ''
+    },
+    {
+        id: 4,
+        name: "Large apartment on the fifth floor",
+        description: "Quiet, clean, nice neighbourhood,reasonable parking, " +
+        "Accomodation enjoys good privacy. " +
+        "Vondelpark and many restaurants just around the corner. " +
+        "Finances go to the Gambia Agricultural Project in Gambia!! " +
+        "Supporting 25 people ( information at interest).",
+        coordinates: {
+            lat: 44.3721825,
+            lon: 21.888081
+        },
+        phone: '+381641234567',
+        email: 'example@gmail.com',
+        image: ''
+    },
+    {
+        id: 5,
+        name: "Three room house",
+        description: "Quiet, clean, nice neighbourhood,reasonable parking, " +
+        "Accomodation enjoys good privacy. " +
+        "Vondelpark and many restaurants just around the corner. " +
+        "Finances go to the Gambia Agricultural Project in Gambia!! " +
+        "Supporting 25 people ( information at interest).",
+        coordinates: {
+            lat: 43.3721825,
+            lon: 21.938081
+        },
+        phone: '+381641234567',
+        email: 'example@gmail.com',
+        image: ''
+    }
+];
+
 export interface AccommodationType {
     id: number;
     name: string;
@@ -31,6 +114,10 @@ export class AccommodationService {
                         this._accommodations = accs;
                         this._filteredAccommodations = accs;
                         this.accommodationsSubject.next(this._accommodations);
+                        // if none in databse, insert some mock data
+                        if (accs.length === 0) {
+                            mockAccommodations.forEach(acc => this.addAccommodation(acc));
+                        }
                     });
             });
     }

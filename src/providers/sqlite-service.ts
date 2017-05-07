@@ -87,7 +87,7 @@ export class SqliteService {
                 accsSubject.complete();
             })
             .catch((error) => {
-                console.log(`Error fetching accommodations: '${error}'`);
+                console.log(`Error fetching accommodations: '${error.message}'`);
             });
 
         return accsSubject;
