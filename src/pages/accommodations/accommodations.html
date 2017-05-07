@@ -29,7 +29,7 @@
             </ion-card-content>
             <ion-row no-padding>
                 <ion-col>
-                    <button ion-button clear small color="secondary" icon-left>
+                    <button ion-button clear small color="secondary" icon-left (click)="emailClicked(acc)">
                         <ion-icon name='mail'></ion-icon>
                         Email
                     </button>
@@ -41,7 +41,7 @@
                     </button>
                 </ion-col>
                 <ion-col text-right>
-                    <button ion-button clear small color="secondary" icon-left>
+                    <button ion-button clear small color="secondary" icon-left (click)="shareClicked(acc)">
                         <ion-icon name='share-alt'></ion-icon>
                         Share
                     </button>

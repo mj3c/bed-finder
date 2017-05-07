@@ -5,6 +5,7 @@ import { AccommodationType, AccommodationService } from '../../providers/accommo
 import { EditAccommodationPage } from "../edit-accommodation/edit-accommodation";
 import { SharingService } from "../../providers/sharing-service";
 import { CallNumber } from "@ionic-native/call-number";
+import { EmailComposer } from "@ionic-native/email-composer";
 
 @Component({
     selector: 'page-accommodations',
@@ -19,6 +20,7 @@ export class AccommodationsPage {
                 public navParams: NavParams,
                 private _actionSheetCtrl: ActionSheetController,
                 private _callNumber: CallNumber,
+                private _emailComposer: EmailComposer,
                 private _accommodationService: AccommodationService,
                 private _sharingService: SharingService
     ) {
@@ -56,6 +58,18 @@ export class AccommodationsPage {
 
     callClicked(acc: AccommodationType): void {
         this._callNumber.callNumber(acc.phone, true);
+    }
+
+    emailClicked(acc: AccommodationType): void {
+        this._emailComposer.isAvailable()
+            .then(_ => {
+                this._emailComposer.open({
+                    app: 'gmail',
+                    to: acc.email,
+                    subject: `Interested in ${acc.name}`
+                });
+            })
+            .catch(_ => alert("Sorry, this option is not available on your device!"));
     }
 
     shareClicked(acc: AccommodationType): void {

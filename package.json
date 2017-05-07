@@ -21,6 +21,7 @@
     "@ionic-native/call-number": "^3.6.1",
     "@ionic-native/camera": "^3.6.1",
     "@ionic-native/core": "^3.6.1",
+    "@ionic-native/email-composer": "^3.6.1",
     "@ionic-native/geolocation": "^3.5.0",
     "@ionic-native/google-maps": "^3.5.0",
     "@ionic-native/social-sharing": "^3.6.1",

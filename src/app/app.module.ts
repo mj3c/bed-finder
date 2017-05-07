@@ -21,6 +21,7 @@ import { IonicImageViewerModule } from "ionic-img-viewer";
 import { SharingService } from "../providers/sharing-service";
 import { FilterService } from "../providers/filter-service";
 import { CallNumber } from "@ionic-native/call-number";
+import { EmailComposer } from "@ionic-native/email-composer";
 
 @NgModule({
     declarations: [
@@ -57,7 +58,8 @@ import { CallNumber } from "@ionic-native/call-number";
         PictureService,
         SharingService,
         FilterService,
-        CallNumber
+        CallNumber,
+        EmailComposer
     ]
 })
 export class AppModule {
