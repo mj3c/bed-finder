@@ -20,6 +20,7 @@ import { SqliteService } from "../providers/sqlite-service";
 import { PictureService } from "../providers/picture-service";
 import { IonicImageViewerModule } from "ionic-img-viewer";
 import { SharingService } from "../providers/sharing-service";
+import { FilterService } from "../providers/filter-service";
 
 @NgModule({
     declarations: [
@@ -56,7 +57,8 @@ import { SharingService } from "../providers/sharing-service";
         GeolocationService,
         SqliteService,
         PictureService,
-        SharingService
+        SharingService,
+        FilterService
     ]
 })
 export class AppModule {

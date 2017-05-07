@@ -1,5 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { FilterService, SearchTerms } from "../../providers/filter-service";
+import { MapPage } from "../map/map";
 
 @Component({
     selector: 'page-home',
@@ -8,13 +10,27 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
     @ViewChild('logo')
     private _logoEl: ElementRef;
+    public searchArea: string = '';
+    public searchInfo: string = '';
 
-    constructor(public navCtrl: NavController) {
+    constructor(public navCtrl: NavController, private _filterService: FilterService) {
 
     }
 
     ionViewDidLoad() {
         this.drawLogo();
+    }
+
+    search() {
+        let terms: SearchTerms = {
+            area: this.searchArea.trim().toLowerCase(),
+            info: this.searchInfo.trim().toLowerCase(),
+            coords: null
+        };
+        this._filterService.setTerms(terms);
+        this.navCtrl.push(MapPage, {
+            data: terms
+        });
     }
 
     drawLogo() {

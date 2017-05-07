@@ -14,10 +14,13 @@
 
         <ion-list id="home-list">
             <ion-item>
-                <ion-input placeholder="Anywhere"></ion-input>
+                <ion-input placeholder="Anywhere" [(ngModel)]="searchArea"></ion-input>
             </ion-item>
             <ion-item>
-                <button ion-button large round>Search</button>
+                <ion-input placeholder="Additional info..." [(ngModel)]="searchInfo"></ion-input>
+            </ion-item>
+            <ion-item>
+                <button ion-button large round (click)="search()">Search</button>
             </ion-item>
         </ion-list>
     </div>
