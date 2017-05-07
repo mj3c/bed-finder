@@ -29,7 +29,9 @@ export class HomePage {
         };
         this._filterService.setTerms(terms);
         this.navCtrl.push(MapPage, {
-            data: terms
+            data: {
+                terms: terms
+            }
         });
     }
 

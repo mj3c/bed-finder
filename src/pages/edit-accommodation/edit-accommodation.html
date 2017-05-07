@@ -49,14 +49,22 @@
             <ion-col col-2>
                 <ion-icon name="map" class="section-icon"></ion-icon>
             </ion-col>
-            <ion-col col-7>
+            <ion-col col-4>
+            </ion-col>
+            <ion-col col-3>
+                <button ion-button
+                        icon-only
+                        block
+                        (click)="chooseLocationHere()">
+                    <ion-icon name="locate"></ion-icon>
+                </button>
             </ion-col>
             <ion-col col-3>
                 <button ion-button
                         icon-only
                         block
                         (click)="chooseLocation()">
-                    <ion-icon name="locate"></ion-icon>
+                    <ion-icon name="map"></ion-icon>
                 </button>
             </ion-col>
         </ion-row>

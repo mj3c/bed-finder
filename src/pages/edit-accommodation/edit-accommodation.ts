@@ -7,6 +7,8 @@ import { AccommodationService, AccommodationType } from "../../providers/accommo
 import { GeolocationService } from "../../providers/geolocation-service";
 import { PictureService, PictureSource } from "../../providers/picture-service";
 import 'rxjs/add/operator/catch';
+import { MapPage } from "../map/map";
+import { LatLng } from "@ionic-native/google-maps";
 
 enum Mode {
     EDIT,
@@ -52,7 +54,7 @@ export class EditAccommodationPage {
         console.log('ionViewDidLoad EditAccommodation');
     }
 
-    chooseLocation(): void {
+    chooseLocationHere(): void {
         let loading = this._loadingCtrl.create({
             content: 'Fetching current location...'
         });
@@ -68,6 +70,18 @@ export class EditAccommodationPage {
                 loading.dismiss();
                 alert(`Fetching error: '${error.message}'. Please try again after a brief period.`);
             });
+    }
+
+    chooseLocation(): void {
+        this.navCtrl.push(MapPage, {
+            data: {
+                chooseLocation: true,
+                positionReturned: (position: LatLng) => {
+                    this.accommodation.coordinates.lat = position.lat;
+                    this.accommodation.coordinates.lon = position.lng;
+                }
+            }
+        });
     }
 
     save(): void {
