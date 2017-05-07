@@ -7,7 +7,6 @@ import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { MapPage } from '../pages/map/map';
-import { AccommodationPage } from "../pages/accommodation/accommodation";
 import { AccommodationsPage } from "../pages/accommodations/accommodations";
 
 import { AccommodationService } from "../providers/accommodation-service";
@@ -21,6 +20,7 @@ import { PictureService } from "../providers/picture-service";
 import { IonicImageViewerModule } from "ionic-img-viewer";
 import { SharingService } from "../providers/sharing-service";
 import { FilterService } from "../providers/filter-service";
+import { CallNumber } from "@ionic-native/call-number";
 
 @NgModule({
     declarations: [
@@ -29,7 +29,6 @@ import { FilterService } from "../providers/filter-service";
         HomePage,
         TabsPage,
         MapPage,
-        AccommodationPage,
         AccommodationsPage,
         EditAccommodationPage
     ],
@@ -45,7 +44,6 @@ import { FilterService } from "../providers/filter-service";
         HomePage,
         TabsPage,
         MapPage,
-        AccommodationPage,
         AccommodationsPage,
         EditAccommodationPage
     ],
@@ -58,7 +56,8 @@ import { FilterService } from "../providers/filter-service";
         SqliteService,
         PictureService,
         SharingService,
-        FilterService
+        FilterService,
+        CallNumber
     ]
 })
 export class AppModule {

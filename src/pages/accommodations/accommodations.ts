@@ -4,6 +4,7 @@ import { ActionSheetController, NavController, NavParams } from 'ionic-angular';
 import { AccommodationType, AccommodationService } from '../../providers/accommodation-service';
 import { EditAccommodationPage } from "../edit-accommodation/edit-accommodation";
 import { SharingService } from "../../providers/sharing-service";
+import { CallNumber } from "@ionic-native/call-number";
 
 @Component({
     selector: 'page-accommodations',
@@ -17,6 +18,7 @@ export class AccommodationsPage {
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 private _actionSheetCtrl: ActionSheetController,
+                private _callNumber: CallNumber,
                 private _accommodationService: AccommodationService,
                 private _sharingService: SharingService
     ) {
@@ -52,7 +54,11 @@ export class AccommodationsPage {
         });
     }
 
-    shareClicked(acc): void {
+    callClicked(acc: AccommodationType): void {
+        this._callNumber.callNumber(acc.phone, true);
+    }
+
+    shareClicked(acc: AccommodationType): void {
         let nameFontSize: number = 72,
             descFontSize = 24,
             startPos: any = { x: 100, y: 150 },
