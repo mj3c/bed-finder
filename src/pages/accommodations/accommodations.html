@@ -2,30 +2,58 @@
 
     <ion-navbar>
         <ion-title>Accommodations</ion-title>
-        <ion-buttons end>
-            <button ion-button
-                    icon-only
-                    (click)="newAccommodation()">
-                <ion-icon name="add"></ion-icon>
-            </button>
-            <!-- TODO: Create 'more' menu and options for delete and share.-->
-        </ion-buttons>
     </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
     <!-- invisible canvas used for generating the image to share -->
     <canvas id="imageshare" #imageshare width="1080" height="1920">
     </canvas>
+
+    <ion-fab top right edge>
+        <button ion-fab color="secondary" (click)="newAccommodation()">
+            <ion-icon name="add"></ion-icon>
+        </button>
+    </ion-fab>
+
     <ion-list>
-        <ion-item *ngFor="let acc of accommodations"
-                  (click)="accommodationClicked(acc)"
-                  (press)="accommodationPressed(acc)">
-            <p>{{acc.name}} | {{acc.description}}</p>
-            <button ion-button (click)="shareClicked(acc)">Share</button>
-        </ion-item>
+        <ion-card *ngFor="let acc of accommodations">
+            <img [src]="'data:image/jpeg;base64,' + acc.image" imageViewer>
+            <ion-card-content>
+                <ion-card-title (click)="accommodationClicked(acc)">
+                    {{acc.name}}
+                </ion-card-title>
+                <p>{{acc.description}}</p>
+            </ion-card-content>
+            <ion-row no-padding>
+                <ion-col>
+                    <button ion-button clear small color="secondary" icon-left>
+                        <ion-icon name='mail'></ion-icon>
+                        Email
+                    </button>
+                </ion-col>
+                <ion-col text-center>
+                    <button ion-button clear small color="secondary" icon-left>
+                        <ion-icon name='call'></ion-icon>
+                        Call
+                    </button>
+                </ion-col>
+                <ion-col text-right>
+                    <button ion-button clear small color="secondary" icon-left>
+                        <ion-icon name='share-alt'></ion-icon>
+                        Share
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-card>
     </ion-list>
+        <!--<ion-item *ngFor="let acc of accommodations"-->
+                  <!--(click)="accommodationClicked(acc)"-->
+                  <!--(press)="accommodationPressed(acc)">-->
+            <!--<p>{{acc.name}} | {{acc.description}}</p>-->
+            <!--<button ion-button (click)="shareClicked(acc)">Share</button>-->
+        <!--</ion-item>-->
 
 </ion-content>

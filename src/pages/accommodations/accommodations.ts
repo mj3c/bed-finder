@@ -1,7 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActionSheetController, NavController, NavParams } from 'ionic-angular';
 
-import { AccommodationPage } from '../accommodation/accommodation';
 import { AccommodationType, AccommodationService } from '../../providers/accommodation-service';
 import { EditAccommodationPage } from "../edit-accommodation/edit-accommodation";
 import { SharingService } from "../../providers/sharing-service";
@@ -23,7 +22,12 @@ export class AccommodationsPage {
     ) {
         this._accommodationService.accommodationsSubject
             .subscribe(accs => {
-                this.accommodations = accs;
+                this.accommodations = accs.map(acc => {
+                    if (!acc.image) {
+                        acc.image = _accommodationService.getMockImageData()
+                    }
+                    return acc;
+                });
             });
     }
 
@@ -32,17 +36,6 @@ export class AccommodationsPage {
     }
 
     accommodationClicked(acc: AccommodationType): void {
-        this.navCtrl.push(AccommodationPage, {
-            data: {
-                id: acc.id,
-                name: acc.name,
-                description: acc.description,
-                coordinates: acc.coordinates
-            }
-        });
-    }
-
-    accommodationPressed(acc: AccommodationType): void {
         this.navCtrl.push(EditAccommodationPage, {
             data: {
                 id: acc.id,
