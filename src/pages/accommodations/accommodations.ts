@@ -92,6 +92,11 @@ export class AccommodationsPage {
             context.fillText(descLines[i], curPos.x, curPos.y);
             curPos.y += descFontSize;
         }
+        curPos.y += 30;
+
+        context.fillText(`Phone: ${acc.phone}`, curPos.x, curPos.y);
+        curPos.y += 20;
+        context.fillText(`Email: ${acc.email}`, curPos.x, curPos.y);
         curPos.y += 50;
 
         image.src = `data:image/jpeg;base64,${acc.image}`;
