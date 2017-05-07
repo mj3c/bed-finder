@@ -13,6 +13,8 @@ export interface AccommodationType {
         lon: number;
     },
     image: string;
+    phone: string;
+    email: string;
 }
 
 @Injectable()

@@ -13,6 +13,8 @@ interface DBAccommodationType {
     lat: number;
     lon: number;
     image: string;
+    phone: string;
+    email: string;
 }
 
 @Injectable()
@@ -25,7 +27,9 @@ export class SqliteService {
         'description text, ' +
         'lat real not null, ' +
         'lon real not null, ' +
-        'image text)';
+        'image text, ' +
+        'phone text not null, ' +
+        'email text not null)';
     private DATABASE_CONFIG: SQLiteDatabaseConfig = {
         name: 'bedfinder.db',
         location: 'default'
@@ -63,7 +67,9 @@ export class SqliteService {
                 lat: acc.lat,
                 lon: acc.lon
             },
-            image: acc.image
+            image: acc.image,
+            phone: acc.phone,
+            email: acc.email
         };
     }
 
@@ -89,11 +95,12 @@ export class SqliteService {
 
     public insertAccommodation(acc: AccommodationType): Observable<boolean> {
         let insertSubject: Subject<boolean> = new Subject();
-        let values = [acc.id, acc.name, acc.description, acc.coordinates.lat, acc.coordinates.lon, acc.image];
+        let values = [acc.id, acc.name, acc.description, acc.coordinates.lat,
+            acc.coordinates.lon, acc.image, acc.phone, acc.email];
         this._db.executeSql('' +
             'insert into Accommodations ' +
-            '(id, name, description, lat, lon, image)' +
-            'values (?, ?, ?, ?, ?, ?)', values)
+            '(id, name, description, lat, lon, image, phone, email)' +
+            'values (?, ?, ?, ?, ?, ?, ?, ?)', values)
             .then((result) => {
                 insertSubject.next(result);
                 insertSubject.complete();
@@ -107,14 +114,17 @@ export class SqliteService {
 
     public updateAccommodation(acc: AccommodationType): Observable<boolean> {
         let updateSubject: Subject<boolean> = new Subject();
-        let values = [acc.name, acc.description, acc.coordinates.lat, acc.coordinates.lon, acc.image, acc.id];
+        let values = [acc.name, acc.description, acc.coordinates.lat,
+            acc.coordinates.lon, acc.image, acc.phone, acc.email, acc.id];
         this._db.executeSql('' +
             'update Accommodations set ' +
             'name = ?, ' +
             'description = ?, ' +
             'lat = ?, ' +
             'lon = ?, ' +
-            'image = ? ' +
+            'image = ?, ' +
+            'phone = ?, ' +
+            'email = ? ' +
             'where id = ?;', values)
             .then((result) => {
                 updateSubject.next(result);

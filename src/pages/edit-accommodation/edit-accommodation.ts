@@ -29,7 +29,9 @@ export class EditAccommodationPage {
             lat: 0,
             lon: 0
         },
-        image: ''
+        image: '',
+        phone: '',
+        email: ''
     };
 
     constructor(public navCtrl: NavController,

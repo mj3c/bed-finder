@@ -45,6 +45,33 @@
                 </ion-item>
             </ion-col>
         </ion-row>
+
+
+        <ion-row>
+            <ion-col col-2>
+                <ion-icon name="contact" class="section-icon"></ion-icon>
+            </ion-col>
+            <ion-col col-10>
+                <ion-item>
+                    <ion-input type="tel"
+                               placeholder="Phone"
+                               [(ngModel)]="accommodation.phone"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row class="last-in-group">
+            <ion-col col-2>
+            </ion-col>
+            <ion-col col-10>
+                <ion-item>
+                    <ion-input type="email"
+                               placeholder="Email"
+                               [(ngModel)]="accommodation.email"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+
         <ion-row>
             <ion-col col-2>
                 <ion-icon name="map" class="section-icon"></ion-icon>
@@ -86,6 +113,8 @@
                 </ion-item>
             </ion-col>
         </ion-row>
+
+
         <ion-row>
             <ion-col col-2>
                 <ion-icon name="image" class="section-icon"></ion-icon>
@@ -105,5 +134,7 @@
                 <img [src]="'data:image/jpeg;base64,' + accommodation.image" imageViewer>
             </ion-col>
         </ion-row>
+
+
     </ion-grid>
 </ion-content>
