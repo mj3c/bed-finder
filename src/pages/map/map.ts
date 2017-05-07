@@ -25,6 +25,13 @@ export class MapPage implements AfterViewInit {
     ) {
         this._markers = [];
         this._terms = navParams.get('data');
+        if (!this._terms) {
+            this._terms = {
+                area: '',
+                info: '',
+                coords: null
+            }
+        }
     }
 
     ionViewDidLoad() {
@@ -40,7 +47,6 @@ export class MapPage implements AfterViewInit {
         accs.forEach(acc => {
             let coords: LatLng = new LatLng(acc.coordinates.lat, acc.coordinates.lon);
             let name: string = acc.name;
-            let desc: string = acc.description;
 
             this._map.addMarker({
                 position: coords,
